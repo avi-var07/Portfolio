@@ -63,7 +63,7 @@ const LandingPage = () => {
           </p>
 
           <motion.button
-            onClick={() => navigate('/map')}
+            onClick={() => navigate('/dashboard')}
             className="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-full text-lg font-bold hover:scale-105 transition-transform shadow-lg shadow-primary/50"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
