@@ -1,0 +1,17 @@
+{
+  "name": "gamified-portfolio",
+  "version": "1.0.0",
+  "description": "Gamified AI-powered developer portfolio",
+  "scripts": {
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "keywords": [],
+  "author": "Aviral Varshney",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
