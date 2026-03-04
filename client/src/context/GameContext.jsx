@@ -71,11 +71,17 @@ export const GameProvider = ({ children }) => {
     if (!visitedZones.includes(zoneName)) {
       setVisitedZones(prev => [...prev, zoneName])
       
-      // Check for Portfolio Master achievement
+      // Check for Portfolio Master achievement and Complete Tour XP
       const allZones = ['skills', 'projects', 'achievements', 'ai', 'resume', 'contact']
       const newVisited = [...visitedZones, zoneName]
       if (allZones.every(zone => newVisited.includes(zone))) {
-        unlockAchievement('portfolio-master')
+        const hasCompletedTour = localStorage.getItem('hasCompletedTour')
+        if (!hasCompletedTour) {
+          unlockAchievement('portfolio-master')
+          // Import XP_ACTIONS dynamically to avoid circular dependency
+          addXP(100) // COMPLETE_TOUR XP
+          localStorage.setItem('hasCompletedTour', 'true')
+        }
       }
     }
   }

@@ -8,6 +8,7 @@ import AchievementHall from './pages/AchievementHall'
 import AIAssistant from './pages/AIAssistant'
 import ResumeVault from './pages/ResumeVault'
 import ContactPortal from './pages/ContactPortal'
+import GamificationDemo from './components/GamificationDemo'
 import XPBar from './components/XPBar'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/ai" element={<AIAssistant />} />
           <Route path="/resume" element={<ResumeVault />} />
           <Route path="/contact" element={<ContactPortal />} />
+          <Route path="/demo" element={<GamificationDemo />} />
         </Routes>
       </Router>
     </GameProvider>
