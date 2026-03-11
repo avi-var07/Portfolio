@@ -47,40 +47,118 @@ export function StatsStrip() {
 /* ─── ABOUT ─── */
 export function About() {
   const { discoverSecret } = useGame();
+
   return (
-    <section id="about" className="section" style={{ background: 'linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%)' }}>
+    <section
+      id="about"
+      className="section"
+      style={{ background: "linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%)" }}
+    >
       <div className="container">
-        <Reveal><div className="sec-head"><span className="sec-num">01 //</span><h2 className="sec-title">ABOUT <span>ME</span></h2><div className="sec-line" /></div></Reveal>
+
+        <Reveal>
+          <div className="sec-head">
+            <span className="sec-num">01 //</span>
+            <h2 className="sec-title">
+              ABOUT <span>ME</span>
+            </h2>
+            <div className="sec-line" />
+          </div>
+        </Reveal>
+
         <div className="about-grid">
+
           <Reveal>
             <div className="about-text">
-              <p>I'm <span className="hl">Aviral Varshney</span>, pre-final year <span className="hl2">B.Tech CSE student</span> at Lovely Professional University — a developer who believes <span className="hl3">great software changes behaviour</span>, not just interfaces.</p>
-              <p>My stack is the <span className="hl">MERN ecosystem</span> — I've built a <span className="hl2">gamified eco-driving platform</span> that improved efficiency by <span className="hl3">30%</span>, and a <span className="hlr">Java DSA engine</span> that cut hiring time by <span className="hl3">70%</span>.</p>
-              <p>Beyond code, I'm a <span className="hl">competitive programmer</span> ranked <span className="hl3">globally #2487 on LeetCode</span>, driven by <span className="hl2">curiosity, precision, and impact</span>.</p>
-              <div style={{ marginTop: '22px' }}><CVDropdown /></div>
+
+              <p>
+                I'm <span className="hl">Aviral Varshney</span>, a pre-final year{" "}
+                <span className="hl2">B.Tech CSE student</span> at{" "}
+                <span className="hl2">Lovely Professional University</span> with a{" "}
+                <span className="hl3">CGPA of 8.64</span>, focused on building{" "}
+                <span className="hl">scalable full-stack systems</span> that solve
+                real-world problems.
+              </p>
+
+              <p>
+                My stack revolves around the{" "}
+                <span className="hl">MERN ecosystem</span>. I built a{" "}
+                <span className="hl2">gamified eco-driving platform</span> improving{" "}
+                <span className="hl3">transport efficiency by 30%</span>, and a{" "}
+                <span className="hlr">Java-based recruitment engine</span> that reduced{" "}
+                <span className="hl3">candidate shortlisting time by 70%</span>.
+              </p>
+
+              <p>
+                Passionate about{" "}
+                <span className="hl">Data Structures & Algorithms</span>, holding a{" "}
+                <span className="hl3">1700+ LeetCode rating</span> and ranked among the{" "}
+                <span className="hl2">Top 50 Coders at Lovely Professional University</span>.
+                I enjoy solving complex problems and building{" "}
+                <span className="hl">clean, efficient software</span>.
+              </p>
+
+              <p>
+                <span className="hl">Tech Stack:</span>{" "}
+                React · Node.js · Express · MongoDB · Java · REST APIs
+              </p>
+
+              <p>
+                Currently{" "}
+                <span className="hl3">open to Software Engineering internships and
+                full-stack developer opportunities</span>.
+              </p>
+
+              <div style={{ marginTop: "22px" }}>
+                <CVDropdown />
+              </div>
+
             </div>
           </Reveal>
+
           <Reveal delay={100}>
             <ul className="about-attrs">
+
               {[
-                ['🎓', 'EDUCATION', 'B.Tech CSE — LPU (2023–Present)'],
-                ['📍', 'LOCATION', 'Punjab, India'],
-                ['💻', 'DESIGNATION', 'Aspiring Software Engineer'],
-                ['🔥', 'FOCUS', 'Full Stack · DSA '],
+                ["🎓", "EDUCATION", "B.Tech CSE — LPU (2023–Present)"],
+                ["📍", "LOCATION", "Punjab, India"],
+                ["💻", "ROLE", "Software Engineer | Full Stack Developer"],
+                ["🔥", "FOCUS", "Full Stack · DSA · Scalable Systems"],
+                ["🏆", "ACHIEVEMENT", "Top 50 Coders @ LPU"],
               ].map(([ico, lbl, val], i) => (
-                <li key={i} className="about-attr"><span>{ico}</span><div><span className="aa-lbl">{lbl}</span><span className="aa-val">{val}</span></div></li>
+                <li key={i} className="about-attr">
+                  <span>{ico}</span>
+                  <div>
+                    <span className="aa-lbl">{lbl}</span>
+                    <span className="aa-val">{val}</span>
+                  </div>
+                </li>
               ))}
+
               <li className="about-attr" onMouseEnter={() => discoverSecret(4)}>
-                <span>🏆</span><div><span className="aa-lbl">COMPETITIVE</span><span className="aa-val">LeetCode · CodeChef · Codolio</span></div>
+                <span>⚡</span>
+                <div>
+                  <span className="aa-lbl">COMPETITIVE CODING</span>
+                  <span className="aa-val">LeetCode · CodeChef · Codolio</span>
+                </div>
               </li>
+
               {[
-                ['✉️', 'EMAIL', 'aviralvarshney07@gmail.com'],
-                ['📱', 'PHONE', '+91 8687883676'],
+                ["✉️", "EMAIL", "aviralvarshney07@gmail.com"],
+                ["📱", "PHONE", "+91 8687883676"],
               ].map(([ico, lbl, val], i) => (
-                <li key={`b${i}`} className="about-attr"><span>{ico}</span><div><span className="aa-lbl">{lbl}</span><span className="aa-val">{val}</span></div></li>
+                <li key={`b${i}`} className="about-attr">
+                  <span>{ico}</span>
+                  <div>
+                    <span className="aa-lbl">{lbl}</span>
+                    <span className="aa-val">{val}</span>
+                  </div>
+                </li>
               ))}
+
             </ul>
           </Reveal>
+
         </div>
       </div>
     </section>

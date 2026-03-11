@@ -79,14 +79,20 @@ export default function Hero() {
       </div>
 
       <p className="hero-summary">
-        A <span className="hl">Computer Science Engineer</span> at&nbsp;
+        Hi, I'm <span className="hl">Aviral Varshney</span>,
+        <span className="hl"> Pre-Final year student</span> at&nbsp;
         <span className="hl2">Lovely Professional University</span> with a&nbsp;
-        <span className="hl3">CGPA of 8.64</span>, crafting&nbsp;
-        <span className="hl">MERN stack applications</span> that solve real-world problems.
-        From <span className="hl2">eco-driving platforms</span> to&nbsp;
-        <span className="hlr">algorithmic recruitment engines</span> — I turn complex ideas
-        into clean, impactful products. Competitive programmer ranked&nbsp;
-        <span className="hl3">globally #2487 on LeetCode</span>.
+        <span className="hl3">CGPA of 8.64</span>.
+
+        I design and build <span className="hl">scalable MERN stack applications </span>
+        that solve real-world problems — from
+        <span className="hl2"> eco-driving platforms</span> to 
+        <span className="hlr"> algorithm-driven recruitment systems</span>.
+
+        Passionate about <span className="hl">Data Structures & Algorithms</span>, with a 
+        <span className="hl3"> 1700+ LeetCode rating</span> and ranked among the 
+        <span className="hl2">Top 50 Coders at LPU</span>, building clean, efficient
+        software with real impact.
       </p>
 
       <div className="hero-ctas">
