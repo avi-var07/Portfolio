@@ -21,10 +21,9 @@ export function StatsStrip() {
   const stats = [
     { v: '8.64', l: 'CGPA', secret: 2 },
     { v: '3+', l: 'Projects' },
-    { v: '#2487', l: 'LeetCode Global' },
-    { v: '#1313', l: 'Codolio Rank' },
+    { v: '1700+', l: 'LeetCode Rating' },
+    { v: 'Top 50 in College', l: 'Codolio Rank' },
     { v: '6+', l: 'Certifications' },
-    { v: '95%', l: 'Class X Score' },
   ];
   return (
     <div className="stats-strip">
@@ -55,7 +54,7 @@ export function About() {
         <div className="about-grid">
           <Reveal>
             <div className="about-text">
-              <p>I'm <span className="hl">Aviral Varshney</span>, a second-year <span className="hl2">B.Tech CSE student</span> at Lovely Professional University — a developer who believes <span className="hl3">great software changes behaviour</span>, not just interfaces.</p>
+              <p>I'm <span className="hl">Aviral Varshney</span>, pre-final year <span className="hl2">B.Tech CSE student</span> at Lovely Professional University — a developer who believes <span className="hl3">great software changes behaviour</span>, not just interfaces.</p>
               <p>My stack is the <span className="hl">MERN ecosystem</span> — I've built a <span className="hl2">gamified eco-driving platform</span> that improved efficiency by <span className="hl3">30%</span>, and a <span className="hlr">Java DSA engine</span> that cut hiring time by <span className="hl3">70%</span>.</p>
               <p>Beyond code, I'm a <span className="hl">competitive programmer</span> ranked <span className="hl3">globally #2487 on LeetCode</span>, driven by <span className="hl2">curiosity, precision, and impact</span>.</p>
               <div style={{ marginTop: '22px' }}><CVDropdown /></div>
@@ -66,8 +65,8 @@ export function About() {
               {[
                 ['🎓', 'EDUCATION', 'B.Tech CSE — LPU (2023–Present)'],
                 ['📍', 'LOCATION', 'Punjab, India'],
-                ['💻', 'DESIGNATION', 'Software Engineer (in training)'],
-                ['🔥', 'FOCUS', 'Full Stack · DSA · AI/ML'],
+                ['💻', 'DESIGNATION', 'Aspiring Software Engineer'],
+                ['🔥', 'FOCUS', 'Full Stack · DSA '],
               ].map(([ico, lbl, val], i) => (
                 <li key={i} className="about-attr"><span>{ico}</span><div><span className="aa-lbl">{lbl}</span><span className="aa-val">{val}</span></div></li>
               ))}
@@ -192,22 +191,22 @@ export function Skills() {
 const PROJECTS = [
   {
     num: 'PROJECT_01', name: 'driveSutraGo.com', period: 'Sep 2025 – Dec 2025',
-    github: 'https://github.com/avi-var07', live: 'https://drivesutrago.com',
-    desc: 'A gamified eco-driving MERN platform promoting sustainable driving habits through real-time performance tracking, AI coaching, and community engagement.',
-    bullets: ['Built an <strong>AI Driving Coach</strong> with eco-score analytics, leaderboards, challenges, and virtual community forests', 'Achieved <strong>30% improvement</strong> in driving efficiency with real-time accuracy &lt;5s via Socket.io', 'Increased user engagement by <strong>50%</strong> through gamified XP, levels, and achievements'],
+    github: 'https://github.com/avi-var07/driveSutra.com', live: 'https://drivesutrago.vercel.app/',
+    desc: 'A gamified eco-driving MERN platform promoting sustainable driving habits through real-time transport recommendation and community engagement through reward system.',
+    bullets: ['Built an <strong>gamified eco-drive platform</strong> with eco-score analytics, leaderboards, challenges, and virtual community forests', 'Achieved <strong>30% improvement</strong> in driving efficiency with real-time accuracy &lt;5s via Socket.io', 'Increased user engagement by <strong>50%</strong> through gamified XP, levels, and achievements'],
     stack: ['ReactJS', 'NodeJS', 'Express', 'MongoDB', 'Socket.io', 'Tailwind', 'Geolocation API'],
     secret: 6,
   },
   {
     num: 'PROJECT_02', name: 'Skill-Based Candidate Shortlisting', period: 'Jun 2025 – Jul 2025',
-    github: 'https://github.com/avi-var07',
+    github: 'https://github.com/avi-var07/Skill-Based-Candidate-Shortlisting',
     desc: 'A Java DSA system for automated, objective candidate shortlisting — eliminating bias and accelerating the hiring pipeline through algorithmic scoring.',
     bullets: ['Modular <strong>OOP design</strong> with separate classes for candidate input, skill mapping, and job-requirement parsing', 'Custom <strong>weightage rules</strong> for dynamic job-fit scoring across different profiles', '<strong>70% faster</strong> shortlisting compared to manual evaluation'],
     stack: ['Java', 'DSA', 'OOP', 'Custom Algorithms'],
   },
   {
-    num: 'PROJECT_03', name: 'Kahan Chale — Tour Operator', period: 'Mar 2025 – May 2025',
-    github: 'https://github.com/avi-var07',
+    num: 'PROJECT_03', name: 'Kahan Chale — Tour Management System', period: 'Mar 2025 – May 2025',
+    github: 'https://github.com/avi-var07/Tour-Guide-Management-System',
     desc: 'A fully responsive tourism website simplifying tour planning, package selection, and user interaction — backed by a PHP/MySQL backend.',
     bullets: ['Built <strong>tour package management, booking system, guide assignment</strong>, login, and feedback modules', 'Smart <strong>search, sorting & filtering</strong> by budget, destination, and duration', '<strong>50% nav improvement</strong> and <strong>90% user satisfaction</strong> via feedback-driven UX'],
     stack: ['HTML5', 'Tailwind', 'JavaScript', 'PHP', 'MySQL'],
@@ -295,7 +294,7 @@ export function Achievements() {
         <div className="ach-grid">
           {[
             { ico: '🏆', title: 'Global Rank #2487 — LeetCode', detail: 'Biweekly Contest 172 · Dec 2025' },
-            { ico: '🥇', title: 'Global Rank #1313 — Codolio', detail: 'Competitive Programming · Dec 2025' },
+            { ico: '🥇', title: 'Top 50 — Codolio', detail: 'Competitive Programming · Dec 2025' },
             { ico: '🥉', title: 'Problem Solver Bronze — CodeChef', detail: 'Badge · Sep 2025' },
           ].map((a, i) => (
             <Reveal key={i} delay={i * 70}>
@@ -396,9 +395,9 @@ export function Contact() {
             </div>
             <div className="contact-links">
               {[
-                { href: '#', ico: 'fas fa-code', icoClr: '#ffa116', lbl: 'LEETCODE', val: 'LeetCode Profile' },
-                { href: '#', ico: 'fas fa-laptop-code', icoClr: '#2f8d46', lbl: 'GEEKSFORGEEKS', val: 'GFG Profile' },
-                { href: '#', ico: 'fas fa-trophy', icoClr: '#ff4b4b', lbl: 'CODOLIO', val: 'Codolio Profile' },
+                { href: 'https://leetcode.com/u/ae_jethiyaaaa/', ico: 'fas fa-code', icoClr: '#ffa116', lbl: 'LEETCODE', val: 'LeetCode Profile' },
+                { href: 'https://www.geeksforgeeks.org/profile/aviral_var07', ico: 'fas fa-laptop-code', icoClr: '#2f8d46', lbl: 'GEEKSFORGEEKS', val: 'GFG Profile' },
+                { href: 'https://codolio.com/profile/ae_jethiyaaaa', ico: 'fas fa-trophy', icoClr: '#ff4b4b', lbl: 'CODOLIO', val: 'Codolio Profile' },
               ].map((l, i) => (
                 <a key={`cp${i}`} href={l.href} className="clink-card" target="_blank" rel="noopener noreferrer">
                   <div className="clink-ico"><i className={l.ico} style={{ color: l.icoClr }} /></div>
