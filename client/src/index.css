@@ -19,6 +19,30 @@
   --ggreen: 0 0 24px rgba(0, 255, 157, 0.5);
 }
 
+/* Light Theme */
+[data-theme="light"] {
+  --bg: #f8f9fa;
+  --bg2: #f0f2f5;
+  --bg3: #e8ecf1;
+  --card: #ffffff;
+  --card2: #f5f7fa;
+  --cyan: #0066cc;
+  --green: #00b366;
+  --orange: #ff6b35;
+  --gold: #ffc107;
+  --pink: #d63384;
+  --text: #1a1a1a;
+  --muted: #666666;
+  --dimmed: #999999;
+  --border: rgba(0, 102, 204, 0.15);
+  --gcyan: 0 0 24px rgba(0, 102, 204, 0.3);
+  --ggreen: 0 0 24px rgba(0, 179, 102, 0.3);
+}
+
+[data-theme="light"] body::after {
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.01) 3px, rgba(0,0,0,0.01) 4px);
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 

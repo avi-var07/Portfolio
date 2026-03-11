@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { GameProvider } from './context/GameContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Cursor from './components/Cursor';
 import ParticleCanvas from './components/ParticleCanvas';
 import IntroScreen from './components/IntroScreen';
@@ -14,6 +15,8 @@ import {
   StatsStrip, About, Skills, Projects,
   Training, Achievements, ExtraCurricular, Contact
 } from './components/Sections';
+import { Education } from './components/Education';
+import { Testimonials } from './components/Testimonials';
 
 function Portfolio() {
   const [launched, setLaunched] = useState(false);
@@ -42,9 +45,11 @@ function Portfolio() {
           <Hero />
           <StatsStrip />
           <About />
+          <Education />
           <Skills />
           <Projects />
           <Training />
+          <Testimonials />
           <Achievements />
           <ExtraCurricular />
           <Contact />
@@ -56,8 +61,10 @@ function Portfolio() {
 
 export default function App() {
   return (
-    <GameProvider>
-      <Portfolio />
-    </GameProvider>
+    <ThemeProvider>
+      <GameProvider>
+        <Portfolio />
+      </GameProvider>
+    </ThemeProvider>
   );
 }
