@@ -1,0 +1,41 @@
+.cv-dropdown-wrap { position: relative; }
+
+.btn-cv-nav {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 1.5px;
+  padding: 7px 14px; background: linear-gradient(135deg, var(--cyan), #0099bb);
+  color: #000; font-weight: 700; border-radius: 2px; border: none;
+  display: flex; align-items: center; gap: 6px; transition: all 0.3s; cursor: none;
+}
+.btn-cv-nav:hover { box-shadow: var(--gcyan); transform: translateY(-1px); }
+
+.cv-formats-popup {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  background: rgba(6, 13, 22, 0.97); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px; min-width: 190px;
+  backdrop-filter: blur(20px); z-index: 600;
+  animation: fadeInDown 0.2s ease;
+}
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+.cv-format-btn {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 10px 12px; background: none; border: none; border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.5px;
+  color: var(--muted); cursor: none; transition: all 0.2s; text-align: left;
+}
+.cv-format-btn:hover { background: rgba(0,229,255,0.06); color: var(--cyan); }
+
+/* Mobile */
+.cv-mobile { display: flex; flex-direction: column; }
+.cv-mobile-btn {
+  background: none; border: 1px solid rgba(0,229,255,0.3); color: var(--cyan);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 1.5px;
+  padding: 11px 14px; border-radius: 2px; cursor: none; text-align: left;
+}
+.cv-formats-mob { display: flex; flex-direction: column; gap: 3px; padding: 6px 0 0 12px; }
+.cv-formats-mob button {
+  background: none; border: none; color: var(--muted); cursor: none;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 1px; padding: 8px 10px; text-align: left; border-radius: 2px;
+}
+.cv-formats-mob button:hover { color: var(--cyan); background: rgba(0,229,255,0.04); }

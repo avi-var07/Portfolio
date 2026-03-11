@@ -1,0 +1,45 @@
+.game-hud {
+  position: fixed; bottom: 20px; right: 20px; z-index: 600;
+  background: rgba(3, 8, 14, 0.93); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 16px; min-width: 220px;
+  backdrop-filter: blur(20px); font-family: 'JetBrains Mono', monospace;
+  transition: all 0.4s;
+}
+.hud-toggle {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  font-size: 0.5rem; font-family: 'JetBrains Mono', monospace; color: var(--muted);
+  cursor: none; background: rgba(3, 8, 14, 0.92); border: 1px solid var(--border);
+  padding: 2px 10px; border-radius: 10px; letter-spacing: 1px; transition: color 0.3s;
+  white-space: nowrap;
+}
+.hud-toggle:hover { color: var(--cyan); }
+
+.hud-header {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.58rem; letter-spacing: 2px; color: var(--cyan);
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.hud-level { color: var(--gold); }
+
+.hud-xp-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.hud-xp-lbl { font-size: 0.55rem; color: var(--muted); letter-spacing: 1px; }
+.hud-xp-track { flex: 1; height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+.hud-xp-fill { height: 100%; background: linear-gradient(90deg, var(--green), var(--cyan)); border-radius: 3px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
+.hud-xp-num { font-size: 0.52rem; color: var(--muted); white-space: nowrap; }
+
+.hud-progress { font-size: 0.56rem; color: var(--cyan); margin-bottom: 8px; letter-spacing: 1px; opacity: 0.7; }
+
+.hud-missions { display: flex; flex-direction: column; gap: 5px; max-height: 200px; overflow-y: auto; }
+.hud-mission { display: flex; align-items: center; gap: 8px; font-size: 0.57rem; color: var(--dimmed); transition: color 0.3s; }
+.hud-mission.found { color: var(--green); }
+.hud-mi {
+  width: 12px; height: 12px; border: 1px solid var(--dimmed); border-radius: 50%;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 0.48rem; transition: all 0.3s;
+}
+.hud-mission.found .hud-mi { background: var(--green); border-color: var(--green); color: #000; }
+.hud-mi-xp { margin-left: auto; color: var(--gold); font-size: 0.52rem; }
+
+@media (max-width: 600px) {
+  .game-hud { bottom: 10px; right: 10px; min-width: 180px; padding: 12px 12px; }
+}

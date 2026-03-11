@@ -1,0 +1,32 @@
+.party-overlay {
+  position: fixed; inset: 0; z-index: 8000;
+  background: rgba(3, 8, 14, 0.93); backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 18px; text-align: center; padding: 24px;
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.party-stars { font-size: 3rem; }
+.party-title {
+  font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 4vw, 2.8rem);
+  font-weight: 800; letter-spacing: 3px;
+  background: linear-gradient(135deg, var(--gold), var(--orange), #ff2d78);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.party-sub {
+  font-family: 'Outfit', sans-serif; font-size: 1rem; color: #8ab4cc;
+  max-width: 500px; line-height: 1.7;
+}
+.party-rank { color: var(--gold); font-weight: 700; }
+.party-score {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+  color: var(--cyan); letter-spacing: 2px;
+}
+.party-score strong { color: var(--gold); }
+.party-close {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 2px;
+  padding: 12px 26px; border: 1.5px solid var(--cyan); color: var(--cyan);
+  background: transparent; border-radius: 2px; cursor: none; transition: all 0.3s;
+}
+.party-close:hover { background: rgba(0,229,255,0.08); }
