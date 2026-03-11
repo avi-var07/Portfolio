@@ -9,6 +9,7 @@ import GameHUD from './components/GameHUD';
 import Toast from './components/Toast';
 import PartyOverlay from './components/PartyOverlay';
 import AviBot from './components/AviBot';
+import ChallengePopup from './components/ChallengePopup';
 import {
   StatsStrip, About, Skills, Projects,
   Training, Achievements, ExtraCurricular, Contact
@@ -16,11 +17,17 @@ import {
 
 function Portfolio() {
   const [launched, setLaunched] = useState(false);
+  const [challengeStarted, setChallengeStarted] = useState(false);
 
   return (
     <>
       <Cursor />
       {!launched && <IntroScreen onDone={() => setLaunched(true)} />}
+
+      {/* Challenge Popup */}
+      {launched && !challengeStarted && (
+        <ChallengePopup onStart={() => setChallengeStarted(true)} />
+      )}
 
       {/* Always mount but hide until launched */}
       <div style={{ visibility: launched ? 'visible' : 'hidden' }}>

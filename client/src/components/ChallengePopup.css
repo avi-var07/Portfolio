@@ -1,0 +1,399 @@
+.challenge-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.challenge-overlay.opening {
+  animation: backdropFadeIn 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.challenge-overlay.closing {
+  animation: backdropFadeOut 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdropFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.challenge-popup {
+  position: relative;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  border: 2px solid #64748b;
+  border-radius: 20px;
+  padding: 48px 42px;
+  max-width: 520px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(100, 200, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  scrollbar-width: thin;
+  scrollbar-color: #64748b transparent;
+}
+
+.challenge-popup::-webkit-scrollbar {
+  width: 6px;
+}
+
+.challenge-popup::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.challenge-popup::-webkit-scrollbar-thumb {
+  background: #64748b;
+  border-radius: 3px;
+}
+
+.challenge-popup::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.challenge-popup.opening {
+  animation: popupScale 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.challenge-popup.closing {
+  animation: popupScaleOut 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@keyframes popupScale {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes popupScaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+}
+
+/* Decorative stars */
+.popup-stars {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.popup-stars .star {
+  font-size: 24px;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.popup-stars .star:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.popup-stars .star:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.popup-stars .star:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Title */
+.popup-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin: 0 0 16px 0;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+/* Content */
+.popup-content {
+  margin-bottom: 28px;
+}
+
+.popup-intro {
+  font-size: 16px;
+  color: #cbd5e1;
+  text-align: center;
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+.popup-challenge {
+  font-size: 16px;
+  color: #cbd5e1;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.popup-challenge .highlight {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.challenge-description {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.challenge-description p {
+  font-size: 15px;
+  color: #cbd5e1;
+  margin: 0 0 16px 0;
+  line-height: 1.6;
+}
+
+.challenge-description p:last-of-type {
+  margin-bottom: 0;
+}
+
+.challenge-description .highlight {
+  color: #60a5fa;
+  font-weight: 600;
+  background: rgba(96, 165, 250, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.challenge-hints {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #cbd5e1;
+  padding: 10px;
+  background: rgba(51, 65, 85, 0.3);
+  border-radius: 8px;
+  border-left: 3px solid #60a5fa;
+  animation: slideInLeft 0.6s ease-out backwards;
+}
+
+.hint:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.hint:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.hint:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hint-icon {
+  font-size: 18px;
+  display: inline-block;
+  min-width: 24px;
+}
+
+.popup-question {
+  font-size: 16px;
+  color: #e2e8f0;
+  text-align: center;
+  margin: 16px 0 0 0 !important;
+  font-weight: 600;
+  animation: slideInUp 0.6s ease-out 0.4s backwards;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popup-encouragement {
+  font-size: 18px;
+  text-align: center;
+  color: #fbbf24;
+  margin: 0;
+  font-weight: 600;
+  animation: slideInUp 0.6s ease-out 0.5s backwards;
+}
+
+/* Button */
+.start-button {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 10px 20px rgba(96, 165, 250, 0.3);
+  animation: slideInUp 0.6s ease-out 0.6s backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.start-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.start-button:hover::before {
+  left: 100%;
+}
+
+.start-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(96, 165, 250, 0.4);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.start-button:active {
+  transform: translateY(-1px);
+}
+
+.button-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.start-button:hover .button-arrow {
+  transform: translateX(4px);
+}
+
+/* Accent line */
+.popup-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+  border-radius: 0 0 18px 18px;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.5;
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .challenge-popup {
+    padding: 36px 24px;
+    max-width: 95%;
+  }
+
+  .popup-title {
+    font-size: 24px;
+  }
+
+  .popup-content p {
+    font-size: 14px;
+  }
+
+  .challenge-hints {
+    gap: 10px;
+  }
+
+  .hint {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .hint-icon {
+    font-size: 16px;
+  }
+
+  .start-button {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .popup-stars {
+    display: none;
+  }
+}
