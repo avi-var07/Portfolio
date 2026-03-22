@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useGame } from '../context/GameContext';
 import CVDropdown from './CVDropdown';
-import axios from 'axios';
+import confetti from 'canvas-confetti';
 import './Sections.css';
 
 /* ─── REVEAL WRAPPER ─── */
@@ -268,27 +268,40 @@ export function Skills() {
 /* ─── PROJECTS ─── */
 const PROJECTS = [
   {
-    num: 'PROJECT_01', name: 'driveSutraGo.com', period: 'Sep 2025 – Dec 2025',
+    num: 'PROJECT_01', name: 'driveSutraGo', sub: 'Eco-Driving Gamification Platform', period: 'Sep 2025 – Dec 2025',
     github: 'https://github.com/avi-var07/driveSutra.com', live: 'https://drivesutrago.vercel.app/',
-    desc: 'A gamified eco-driving MERN platform promoting sustainable driving habits through real-time transport recommendation and community engagement through reward system.',
+    desc: 'A gamified eco-driving MERN platform encouraging sustainable travel behavior through real-time trip mode recommendations, tracking, rewards, and community engagement.',
     bullets: ['Built an <strong>gamified eco-drive platform</strong> with eco-score analytics, leaderboards, challenges, and virtual community forests', 'Achieved <strong>30% improvement</strong> in driving efficiency with real-time accuracy &lt;5s via Socket.io', 'Increased user engagement by <strong>50%</strong> through gamified XP, levels, and achievements'],
-    stack: ['ReactJS', 'NodeJS', 'Express', 'MongoDB', 'Socket.io', 'Tailwind', 'Geolocation API'],
+    stack: ['ReactJS', 'NodeJS', 'Express', 'MongoDB'],
     secret: 6,
   },
   {
-    num: 'PROJECT_02', name: 'Skill-Based Candidate Shortlisting', period: 'Jun 2025 – Jul 2025',
+    num: 'PROJECT_02', name: 'Skill-Based Candidate Shortlisting System', sub: 'Java DSA Recruitment System', period: 'Jun 2025 – Jul 2025',
     github: 'https://github.com/avi-var07/Skill-Based-Candidate-Shortlisting',
-    desc: 'A Java DSA system for automated, objective candidate shortlisting — eliminating bias and accelerating the hiring pipeline through algorithmic scoring.',
+    desc: 'A command-line Java application that evaluates and shortlists candidates based on problem-solving and technical skills using advanced data structures.',
     bullets: ['Modular <strong>OOP design</strong> with separate classes for candidate input, skill mapping, and job-requirement parsing', 'Custom <strong>weightage rules</strong> for dynamic job-fit scoring across different profiles', '<strong>70% faster</strong> shortlisting compared to manual evaluation'],
-    stack: ['Java', 'DSA', 'OOP', 'Custom Algorithms'],
+    stack: ['Java', 'DSA', 'OOP'],
   },
   {
-    num: 'PROJECT_03', name: 'Kahan Chale — Tour Management System', period: 'Mar 2025 – May 2025',
+    num: 'PROJECT_03', name: 'Kahan Chale', sub: 'Tour Operator Website', period: 'Mar 2025 – May 2025',
     github: 'https://github.com/avi-var07/Tour-Guide-Management-System',
-    desc: 'A fully responsive tourism website simplifying tour planning, package selection, and user interaction — backed by a PHP/MySQL backend.',
+    desc: 'A responsive tour operator website for simplifying tour planning and package selection, featuring a booking system and advanced filtering (budget, destination, duration).',
     bullets: ['Built <strong>tour package management, booking system, guide assignment</strong>, login, and feedback modules', 'Smart <strong>search, sorting & filtering</strong> by budget, destination, and duration', '<strong>50% nav improvement</strong> and <strong>90% user satisfaction</strong> via feedback-driven UX'],
-    stack: ['HTML5', 'Tailwind', 'JavaScript', 'PHP', 'MySQL'],
+    stack: ['HTML', 'Tailwind', 'JS', 'PHP'],
     secret: 7,
+  },
+  {
+    num: 'PROJECT_04', name: 'Khaana Bank Trust Website', sub: 'NGO Community Platform', period: 'Jan 2025 – Feb 2025',
+    github: 'https://github.com/avi-var07/NGO-Project',
+    desc: 'A responsive NGO website for Khaana Bank Trust, enabling community engagement, donation facilitation, and awareness campaigns for food redistribution efforts.',
+    bullets: ['Implemented <strong>donation interface</strong> with campaign tracking and community impact dashboards', 'Built <strong>responsive layouts</strong> with accessible design patterns and cross-browser compatibility', 'Integrated <strong>volunteer registration</strong> and event management modules'],
+    stack: ['Express', 'Node', 'React'],
+  },
+  {
+    num: 'PROJECT_05', name: 'Gamified Portfolio', sub: 'Interactive Personal Website', period: 'Present',
+    desc: 'A gamified personal portfolio where users earn XP, unlock levels, and discover hidden elements through interactive engagement — the very site you\'re browsing!',
+    bullets: ['Designed an <strong>XP & leveling system</strong> with hidden secrets and achievement badges rewarding exploration', 'Implemented <strong>particle canvas</strong>, smooth reveal transitions, and micro-interactions for a premium feel', 'Built with <strong>performance-first</strong> approach — lazy loading, intersection observers, and optimized re-renders'],
+    stack: ['React', 'Framer Motion', 'CSS3'],
   },
 ];
 
@@ -311,6 +324,7 @@ export function Projects() {
                         onDoubleClick={() => p.secret && discoverSecret(p.secret)}
                         title={p.secret ? 'Try double-clicking!' : ''}
                       >{p.name}</div>
+                      {p.sub && <div className="proj-sub">{p.sub}</div>}
                       <div className="proj-period">📅 {p.period}</div>
                     </div>
                     <div className="proj-links">
@@ -431,20 +445,119 @@ export function ExtraCurricular() {
   );
 }
 
+/* ─── CONFETTI PARTY EFFECT ─── */
+function firePartyBomber() {
+  const duration = 4000;
+  const end = Date.now() + duration;
+  const colors = ['#00e5ff', '#00ff9d', '#ffd700', '#ff6b35', '#e040fb', '#ff4081'];
+
+  // Initial big burst from center
+  confetti({ particleCount: 120, spread: 100, origin: { y: 0.6 }, colors, startVelocity: 40, gravity: 0.8 });
+
+  // Continuous side cannons
+  const frame = () => {
+    if (Date.now() > end) return;
+    confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0, y: 0.65 }, colors, startVelocity: 45, gravity: 1.2, scalar: 1.1 });
+    confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1, y: 0.65 }, colors, startVelocity: 45, gravity: 1.2, scalar: 1.1 });
+    requestAnimationFrame(frame);
+  };
+  frame();
+
+  // Delayed starburst from top
+  setTimeout(() => {
+    confetti({ particleCount: 80, spread: 160, origin: { y: 0 }, colors, startVelocity: 30, gravity: 0.6, ticks: 250, shapes: ['star'], scalar: 1.4 });
+  }, 600);
+
+  // Final shower
+  setTimeout(() => {
+    confetti({ particleCount: 60, spread: 120, origin: { y: 0.35, x: 0.5 }, colors, startVelocity: 20, gravity: 0.4, ticks: 300, shapes: ['circle'] });
+  }, 1800);
+}
+
+/* ─── TYPEWRITER HOOK ─── */
+function useTypewriter(text, speed = 45, startTyping = false) {
+  const [displayed, setDisplayed] = useState('');
+  useEffect(() => {
+    if (!startTyping) { setDisplayed(''); return; }
+    let i = 0;
+    setDisplayed('');
+    const interval = setInterval(() => {
+      setDisplayed(text.slice(0, i + 1));
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, speed);
+    return () => clearInterval(interval);
+  }, [text, speed, startTyping]);
+  return displayed;
+}
+
+/* ─── FLOATING SPARKLE PARTICLES ─── */
+function FloatingSparkles() {
+  const sparkles = Array.from({ length: 18 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    delay: Math.random() * 3,
+    dur: 2 + Math.random() * 3,
+    size: 3 + Math.random() * 5,
+    color: ['#00e5ff', '#00ff9d', '#ffd700', '#e040fb', '#ff4081'][i % 5],
+  }));
+  return (
+    <div className="sparkle-field">
+      {sparkles.map(s => (
+        <span key={s.id} className="sparkle" style={{
+          left: `${s.left}%`,
+          animationDelay: `${s.delay}s`,
+          animationDuration: `${s.dur}s`,
+          width: `${s.size}px`,
+          height: `${s.size}px`,
+          background: s.color,
+          boxShadow: `0 0 ${s.size * 2}px ${s.color}`,
+        }} />
+      ))}
+    </div>
+  );
+}
+
 /* ─── CONTACT ─── */
 export function Contact() {
   const { discoverSecret } = useGame();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const thankYouText = useTypewriter('Thank You for contacting Aviral Ved Varshney!', 50, sent);
+
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.subject || !form.message) { alert('Please fill all fields.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) { alert('Enter a valid email.'); return; }
+    setError('');
+    if (!form.name || !form.email || !form.subject || !form.message) { setError('Please fill all fields.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) { setError('Please enter a valid email address.'); return; }
     setSending(true);
-    setTimeout(() => { setSent(true); setSending(false); }, 1400);
-  };
+    try {
+      const res = await fetch('https://formspree.io/f/mkoqeklj', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+          _subject: `Portfolio Contact: ${form.subject}`,
+        }),
+      });
+      if (res.ok) {
+        setSent(true);
+        firePartyBomber();
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Network error. Please check your connection.');
+    } finally {
+      setSending(false);
+    }
+  }, [form]);
 
   return (
     <section id="contact" className="section" style={{ background: 'linear-gradient(180deg, var(--bg), var(--bg2))' }}>
@@ -489,26 +602,30 @@ export function Contact() {
             <div className="contact-form">
               <div className="form-title">SEND A MESSAGE</div>
               {sent ? (
-                <div className="form-success">✔ &nbsp;MESSAGE SENT! I'll reply soon.</div>
+                <div className="form-success-enhanced">
+                  <FloatingSparkles />
+                  <div className="success-icon-ring">
+                    <svg viewBox="0 0 52 52" className="success-checkmark">
+                      <circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" strokeWidth="2" className="checkmark-circle" />
+                      <path fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" d="M15 27l7 7 15-15" className="checkmark-path" />
+                    </svg>
+                  </div>
+                  <div className="success-typewriter">{thankYouText}<span className="typewriter-cursor">|</span></div>
+                  <div className="success-subtitle">Your message has been delivered successfully ✨</div>
+                </div>
               ) : (
                 <form onSubmit={handleSubmit}>
+                  {error && <div className="form-error">{error}</div>}
                   <div className="f-row">
                     <div className="fg"><label>Your Name</label><input type="text" placeholder="John Doe" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} /></div>
-                    <div className="fg"><label>Email</label><input type="email" placeholder="john@email.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} /></div>
+                    <div className="fg"><label>Email</label><input type="email" placeholder="john@example.com" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} /></div>
                   </div>
                   <div className="fg">
                     <label>Subject</label>
-                    <select value={form.subject} onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}>
-                      <option value="">Choose a topic…</option>
-                      <option>Internship Opportunity</option>
-                      <option>Project Collaboration</option>
-                      <option>Freelance Work</option>
-                      <option>Just Saying Hi!</option>
-                      <option>Other</option>
-                    </select>
+                    <input type="text" placeholder="Collaboration / Hello" value={form.subject} onChange={e => setForm(f => ({ ...f, subject: e.target.value }))} />
                   </div>
-                  <div className="fg"><label>Message</label><textarea placeholder="Write your message…" rows={4} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} /></div>
-                  <button type="submit" className="btn-send">
+                  <div className="fg"><label>Message</label><textarea placeholder="Tell me about your project or role…" rows={4} value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))} /></div>
+                  <button type="submit" className="btn-send" disabled={sending}>
                     {sending ? <><i className="fas fa-spinner fa-spin" /> SENDING…</> : <><i className="fas fa-paper-plane" /> SEND MESSAGE</>}
                   </button>
                 </form>
